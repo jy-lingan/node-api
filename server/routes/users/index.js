@@ -1,25 +1,8 @@
 const express = require('express')
 const app = express()
 
-app.get('/getUsernames', (req, res) => {
-    const users = [
-        {
-            username: 'user1',
-            password: 'pass1'
+const { auth, users } = require('../../controllers')
 
-        },
-        {
-            username: 'user2',
-            password: 'pass2'
-        },
-        {
-            username: 'user3',
-            password: 'pass3'
-        }
-    ]
-    res.json({
-        users
-    })
-})
+app.get('/getUsernames', users.getUsernames)
 
 module.exports = app
