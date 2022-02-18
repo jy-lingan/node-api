@@ -38,6 +38,22 @@ app.get('/getUsernames', (req, res) => {
     })
 })
 
+app.post('/login', (req, res) => {
+    const { username, password } = req.body
+    if (username === 'user1' && password === 'pass1') {
+        res.send({
+            success: true,
+            message: 'Login successful',
+            name : 'user1'
+        })
+    } else {
+        res.send({
+            success: false,
+            message: 'Login failed'
+        })
+    }
+})
+
 app.listen(3000, () => {
     console.log('El servidor está corriendo en el puerto 3000')
 })
