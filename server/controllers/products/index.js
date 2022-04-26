@@ -35,8 +35,26 @@ const updateProduct = async (req, res) => {
     })
 }
 
+const createProduct = async (req, res) => {
+    const { title, price, descriptions } = req.body
+
+    const product = new ProductoSchema({
+        title,
+        price,
+        descriptions
+    })
+
+    await product.save()
+
+    res.status(200).json({
+        success: true,
+        data: product
+    })
+}
+
 module.exports = {
     getProducts,
     getProductById,
-    updateProduct
+    updateProduct,
+    createProduct
 }
