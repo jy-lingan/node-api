@@ -52,9 +52,22 @@ const createProduct = async (req, res) => {
     })
 }
 
+const deleteProduct = async (req, res) => {
+    const { id } = req.params
+
+    const product = await ProductoSchema.findByIdAndDelete(id)
+
+    res.status(200).json({
+        success: true,
+        data: product
+    })
+}
+
+
 module.exports = {
     getProducts,
     getProductById,
     updateProduct,
-    createProduct
+    createProduct,
+    deleteProduct
 }
